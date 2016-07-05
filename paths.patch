@@ -9,7 +9,7 @@
  if [ -z "$SCALA_VERSION" ]; then
  	SCALA_VERSION=2.10.6
  fi
-@@ -48,91 +46,6 @@
+@@ -48,91 +46,8 @@
  	SCALA_BINARY_VERSION=2.10
  fi
  
@@ -96,6 +96,8 @@
 -    CLASSPATH="$CLASSPATH":"$file"
 -  fi
 -done
++CLASSPATH=.
++for file in "/usr/share/kafka/libs"/*.jar; do CLASSPATH="$CLASSPATH":"$file"; done
 -shopt -u nullglob
 -
  # JMX settings
@@ -105,7 +107,7 @@
  
  # Log directory to use
  if [ "x$LOG_DIR" = "x" ]; then
-+    LOG_DIR="var/log/kafka"
++    LOG_DIR="/var/log/kafka"
 -    LOG_DIR="$base_dir/logs"
  fi
  
